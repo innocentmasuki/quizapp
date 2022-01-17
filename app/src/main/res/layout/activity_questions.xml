@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Questions">
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/bottom_buttons"
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical">
+
+
+<!--        <TextView-->
+<!--            android:layout_width="200dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:textAppearance="?android:attr/textAppearanceLarge"-->
+<!--            android:id="@+id/DispName"-->
+<!--            android:layout_marginHorizontal="20dp"-->
+
+<!--            android:textColor="@color/accent_material_light"-->
+<!--            android:layout_alignParentTop="true"-->
+<!--            android:layout_alignParentLeft="true"-->
+<!--            android:layout_alignParentStart="true" />-->
+
+
+
+
+        <TextView
+            android:id="@+id/tvque"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginHorizontal="20dp"
+
+            android:layout_marginBottom="20dp"
+            android:text="Questions"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/DispName"
+            android:layout_alignStart="@+id/DispName"
+            android:layout_marginHorizontal="20dp"
+
+            android:id="@+id/answersgrp"
+            android:clickable="true"
+            android:layout_centerVertical="true">
+
+
+
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="A"
+                android:paddingVertical="20dp"
+                android:paddingHorizontal="20dp"
+                android:layout_marginVertical="1dp"
+                android:id="@+id/radioButton"
+                android:checked="false"
+                />
+
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="20dp"
+                android:paddingHorizontal="20dp"
+                android:layout_marginVertical="1dp"
+                android:text="B"
+                android:id="@+id/radioButton2"
+                android:checked="false" />
+
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="20dp"
+                android:paddingHorizontal="20dp"
+                android:layout_marginVertical="1dp"
+                android:text="C"
+                android:id="@+id/radioButton3"
+                android:checked="false" />
+
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="20dp"
+                android:layout_marginVertical="1dp"
+                android:paddingHorizontal="20dp"
+                android:text="D"
+                android:id="@+id/radioButton4"
+                android:checked="false" />
+
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/check_answer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/check_answers_button"
+            android:paddingHorizontal="50dp"
+            android:backgroundTint="@color/secondary_color"
+            android:text="CHECK"
+            android:layout_marginBottom="30dp"
+            android:layout_marginHorizontal="20dp"
+
+            android:textColor="@color/black"
+            android:textAllCaps="false"
+            android:textSize="24sp" />
+
+
+
+
+    </LinearLayout>
+
+
+
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/bottom_buttons"
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Quit"
+
+            android:layout_marginBottom="20dp"
+            android:layout_marginHorizontal="20dp"
+            android:id="@+id/buttonquit"
+            android:layout_alignParentStart="true"
+            android:background="@drawable/check_answers_button"
+            android:textColor="@color/black"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Next"
+            android:layout_marginBottom="20dp"
+            android:layout_marginHorizontal="20dp"
+            android:id="@+id/nextQuestion"
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/check_answers_button"
+            android:textColor="@color/black"/>
+
+    </RelativeLayout>
+
+
+</RelativeLayout>
