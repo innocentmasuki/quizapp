@@ -41,7 +41,5 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     
-    implementation "com.github.krtkush:LinearTimer:v2.1.1"
-    implementation 'com.github.rehmanmuradali:ticker:1.0.1'
-    implementation 'com.gusakov:pulse-countdown:1.1.0-rc1'
+
 }

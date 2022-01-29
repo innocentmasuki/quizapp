@@ -1,29 +1,42 @@
 package com.innocentmasuki.quizapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.provider.MediaStore;
+import android.os.CountDownTimer;
 import android.util.Log;
-import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
+import java.util.Locale;
 
 public class Questions extends AppCompatActivity {
 
-    Boolean answered = false;
+    Boolean answered = false, timeUp = false;
+    Animation shake;
 
-    TextView tv;
-    Button nextQuestion, quitbutton, checkAnswer;
+    private boolean mTimerRunning;
+
+    TextView tv, userScores, user_marks;
+    Button nextQuestion, quitButton, submitAnswerBtn;
     RadioGroup radio_g;
     RadioButton rb1,rb2,rb3,rb4;
+
+    ProgressBar mProgressBar,questionProgressBar;
+    CountDownTimer mCountDownTimer;
+
+    int seconds;
+    public static int totalSeconds = 0;
+
 
     String[] questions = {
             "Which method can be defined only once in a program?",
@@ -51,8 +64,14 @@ public class Questions extends AppCompatActivity {
             "int","long","byte","float"
     };
 
+    int[] duration = {60,120,70,12,30,60,120,70,12,30};
+
     int flag=0;
     public static int marks=0,correct=0,wrong=0;
+    int counter = 0;
+
+    private long mTimeLeftInMillis = duration[flag] * 1000;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,11 +79,17 @@ public class Questions extends AppCompatActivity {
         setContentView(R.layout.activity_questions);
 
         TextView textView=(TextView)findViewById(R.id.DispName);
+        mProgressBar=(ProgressBar)findViewById(R.id.progressbar);
+        questionProgressBar=(ProgressBar)findViewById(R.id.questionsProgress);
+        shake = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.shake);
+
 
         nextQuestion=(Button)findViewById(R.id.nextQuestion);
-        checkAnswer=(Button)findViewById(R.id.check_answer);
-        quitbutton=(Button)findViewById(R.id.buttonquit);
+        submitAnswerBtn =(Button)findViewById(R.id.check_answer);
+        quitButton =(Button)findViewById(R.id.buttonquit);
         tv=(TextView) findViewById(R.id.tvque);
+        userScores=(TextView) findViewById(R.id.scores);
+        user_marks=(TextView) findViewById(R.id.user_marks);
 
         radio_g=(RadioGroup)findViewById(R.id.answersgrp);
         rb1=(RadioButton)findViewById(R.id.radioButton);
@@ -78,107 +103,199 @@ public class Questions extends AppCompatActivity {
         rb4.setText(opt[3]);
 
 
-//         circularViewWithTimer = findViewById(R.id.circular_view_with_timer);
-//        CircularView.OptionsBuilder builderWithTimer =
-//                new CircularView.OptionsBuilder()
-//                        .shouldDisplayText(true)
-//                        .setCounterInSeconds(50)
-//                        .setCircularViewCallback(new CircularViewCallback() {
-//                            @Override
-//                            public void onTimerFinish() {
-//
-//                                // Will be called if times up of countdown timer
-//                                Toast.makeText(MainActivity.this, "CircularCallback: Timer Finished ", Toast.LENGTH_SHORT).show();
-//                            }
-//
-//                            @Override
-//                            public void onTimerCancelled() {
-//
-//                                // Will be called if stopTimer is called
-//                                Toast.makeText(MainActivity.this, "CircularCallback: Timer Cancelled ", Toast.LENGTH_SHORT).show();
-//                            }
-//                        });
-//
-//        circularViewWithTimer.setOptions(builderWithTimer);
-
-        checkAnswer.setOnClickListener(v -> {
 
 
-
-            if(radio_g.getCheckedRadioButtonId()==-1)
-            {
-                Toast.makeText(getApplicationContext(), "Please select one choice", Toast.LENGTH_SHORT).show();
-                return;
-            }else{
-                answered = true;
-                checkAnswer.setEnabled(false);
-                RadioButton userAnswer = (RadioButton) findViewById(radio_g.getCheckedRadioButtonId());
-                String ansText = userAnswer.getText().toString();
-                if(ansText.equals(answers[flag])) {
-                    correct++;
-                    userAnswer.setBackgroundResource(R.drawable.correct_background);
-                    userAnswer.setTextColor(Color.parseColor("#FFFFFFFF"));
-                }
-
-                else {
-
-                    userAnswer.setBackgroundResource(R.drawable.wrong_background);
-                    radio_g.getChildAt(flag+1).setBackgroundResource(R.drawable.correct_background);
-                    userAnswer.setTextColor(Color.parseColor("#FFFFFFFF"));
-                    ((RadioButton) radio_g.getChildAt(flag+1)).setTextColor(Color.parseColor("#FFFFFFFF"));
-                    wrong++;
-                }
-                rb1.setEnabled(false);
-                rb2.setEnabled(false);
-                rb3.setEnabled(false);
-                rb4.setEnabled(false);
-            }
+        // Iterate through all elements and add them to sum
+        for (int j : duration) totalSeconds += j;
+        questionProgressBar.setMax(questions.length);
+        questionProgressBar.setProgress(flag + 1);
 
 
+        startTimer();
+        updateCountDownText();
+
+        submitAnswerBtn.setOnClickListener(v -> {
+            submitAnswer();
         });
 
         nextQuestion.setOnClickListener(v -> {
-            if(answered){
-                answered = false;
-                checkAnswer.setEnabled(true);
-
-                rb1.setTextColor(Color.parseColor("#000000"));
-                rb2.setTextColor(Color.parseColor("#000000"));
-                rb3.setTextColor(Color.parseColor("#000000"));
-                rb4.setTextColor(Color.parseColor("#000000"));
-
-                rb1.setBackgroundResource(0);
-                rb2.setBackgroundResource(0);
-                rb3.setBackgroundResource(0);
-                rb4.setBackgroundResource(0);
-
-                rb1.setEnabled(true);
-                rb2.setEnabled(true);
-                rb3.setEnabled(true);
-                rb4.setEnabled(true);
-
-
-                flag++;
-                if(flag<questions.length)
-                {
-                    tv.setText(questions[flag]);
-                    rb1.setText(opt[flag*4]);
-                    rb2.setText(opt[flag*4 +1]);
-                    rb3.setText(opt[flag*4 +2]);
-                    rb4.setText(opt[flag*4 +3]);
-                }
-                else
-                {
-                    marks=correct;
-//                Intent in = new Intent(getApplicationContext(),Results.class);
-//                startActivity(in);
-                    Toast.makeText(getApplicationContext(), "All done go to results", Toast.LENGTH_SHORT).show();
-                }
-                radio_g.clearCheck();
-            }
-
+            goToNextQuestion();
         });
 
 
     }
+
+
+    private void submitAnswer() {
+
+        if(radio_g.getCheckedRadioButtonId()==-1)
+        {
+            Toast.makeText(getApplicationContext(), "Please select one choice", Toast.LENGTH_SHORT).show();
+            return;
+
+        }else{
+
+            answered = true;
+            submitAnswerBtn.setEnabled(false);
+            RadioButton userAnswer = (RadioButton) findViewById(radio_g.getCheckedRadioButtonId());
+            String ansText = userAnswer.getText().toString();
+            if(ansText.equals(answers[flag])) {
+                correct++;
+                pauseTimer();
+                marks = marks + seconds;
+                user_marks.setText("Scores : " + marks);
+                userAnswer.setBackgroundResource(R.drawable.correct_background);
+                userAnswer.setTextColor(Color.parseColor("#FFFFFFFF"));
+            }
+
+            else {
+                pauseTimer();
+                userAnswer.setBackgroundResource(R.drawable.wrong_background);
+                for (int i=0;i<4;i++) {
+                    RadioButton o = (RadioButton) radio_g.getChildAt(i);
+                    if (o.getText().toString().equals(answers[flag])) {
+                        o.setBackgroundResource(R.drawable.correct_background);
+                        o.setTextColor(Color.parseColor("#FFFFFFFF"));
+                        o.startAnimation(shake);
+                    }
+                }
+//                    radio_g.getChildAt(flag+1).setBackgroundResource(R.drawable.correct_background);
+                userAnswer.setTextColor(Color.parseColor("#FFFFFFFF"));
+                wrong++;
+            }
+            rb1.setEnabled(false);
+            rb2.setEnabled(false);
+            rb3.setEnabled(false);
+            rb4.setEnabled(false);
+        }
+
+    }
+
+    private void goToNextQuestion() {
+        if(answered || timeUp){
+            answered = false;
+            timeUp = false;
+            submitAnswerBtn.setEnabled(true);
+
+
+            rb1.setTextColor(Color.parseColor("#787878"));
+            rb2.setTextColor(Color.parseColor("#787878"));
+            rb3.setTextColor(Color.parseColor("#787878"));
+            rb4.setTextColor(Color.parseColor("#787878"));
+
+            rb1.setBackgroundResource(0);
+            rb2.setBackgroundResource(0);
+            rb3.setBackgroundResource(0);
+            rb4.setBackgroundResource(0);
+
+            rb1.setEnabled(true);
+            rb2.setEnabled(true);
+            rb3.setEnabled(true);
+            rb4.setEnabled(true);
+
+
+            flag++;
+            if(flag<questions.length){
+
+                if(flag == (questions.length - 1)){
+                    nextQuestion.setText("FINISH");
+                }
+                tv.setText(questions[flag]);
+                rb1.setText(opt[flag*4]);
+                rb2.setText(opt[flag*4 +1]);
+                rb3.setText(opt[flag*4 +2]);
+                rb4.setText(opt[flag*4 +3]);
+
+
+                questionProgressBar.setProgress(flag + 1);
+                mProgressBar.setMax(duration[flag]);
+                resetTimer();
+                startTimer();
+
+            }
+            else
+            {
+                    Intent in = new Intent(getApplicationContext(),Results.class);
+                    in.putExtra("marks", marks);
+                    in.putExtra("total", totalSeconds);
+                    startActivity(in);
+            }
+            radio_g.clearCheck();
+        }
+
+    }
+
+
+    private void startTimer() {
+        mCountDownTimer = new CountDownTimer(mTimeLeftInMillis, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                mTimeLeftInMillis = millisUntilFinished;
+                Log.v("Log_tag", "Tick of Progress"+ mTimeLeftInMillis);
+
+                updateCountDownText();
+            }
+
+            @Override
+            public void onFinish() {
+                mTimerRunning = false;
+                submitAnswerBtn.setEnabled(false);
+                timeUp = true;
+
+            }
+        }.start();
+
+        mTimerRunning = true;
+
+    }
+
+    private void pauseTimer() {
+        mCountDownTimer.cancel();
+        mTimerRunning = false;
+
+    }
+
+    private void resetTimer() {
+        mTimeLeftInMillis = duration[flag] * 1000;
+        updateCountDownText();
+    }
+
+
+    private void updateCountDownText() {
+        mProgressBar.setMax(duration[flag]);
+
+//        int minutes = (int) (mTimeLeftInMillis / 1000) / 60;
+         seconds = (int) (mTimeLeftInMillis / 1000);
+        mProgressBar.setProgress(seconds);
+        Log.v("Log_tag", "Tick of Seconds"+ seconds);
+
+
+
+        String timeLeftFormatted = String.format(Locale.getDefault(), "%02d", seconds);
+
+        userScores.setText(Integer.toString(seconds));
+    }
+
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+
+        super.onSaveInstanceState(outState);
+        outState.putLong("millisLeft",mTimeLeftInMillis);
+        outState.putBoolean("timerRunning",mTimerRunning);
+    }
+
+    @Override
+    protected  void onRestoreInstanceState(Bundle savedInstances){
+        super.onRestoreInstanceState(savedInstances);
+        mTimeLeftInMillis = savedInstances.getLong("millisLeft");
+        mTimerRunning = savedInstances.getBoolean("timerRunning");
+        updateCountDownText();
+
+        if(mTimerRunning){
+            startTimer();
+        }
+    }
+
+
 }
