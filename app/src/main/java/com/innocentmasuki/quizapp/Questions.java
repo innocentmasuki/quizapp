@@ -78,7 +78,6 @@ public class Questions extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_questions);
 
-        TextView textView=(TextView)findViewById(R.id.DispName);
         mProgressBar=(ProgressBar)findViewById(R.id.progressbar);
         questionProgressBar=(ProgressBar)findViewById(R.id.questionsProgress);
         shake = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.shake);
@@ -219,6 +218,7 @@ public class Questions extends AppCompatActivity {
                     in.putExtra("marks", marks);
                     in.putExtra("total", totalSeconds);
                     startActivity(in);
+                    finish();
             }
             radio_g.clearCheck();
         }

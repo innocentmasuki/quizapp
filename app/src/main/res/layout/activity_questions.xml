@@ -71,8 +71,6 @@
         <RadioGroup
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/DispName"
-            android:layout_alignStart="@+id/DispName"
 
             android:id="@+id/answersgrp"
             android:clickable="true"
@@ -123,7 +121,6 @@
                 android:paddingHorizontal="20dp"
                 android:text="D"
                 android:textColor="@color/grey"
-
                 android:id="@+id/radioButton4"
                 android:checked="false" />
 

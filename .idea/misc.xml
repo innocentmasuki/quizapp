@@ -11,6 +11,8 @@
         <entry key="app/src/main/res/drawable/timer_progress_bar.xml" value="0.13020833333333334" />
         <entry key="app/src/main/res/drawable/wrong_background.xml" value="0.14895833333333333" />
         <entry key="app/src/main/res/layout-land/activity_questions.xml" value="0.21825396825396826" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.1625" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_questions.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_results.xml" value="0.25" />
       </map>
