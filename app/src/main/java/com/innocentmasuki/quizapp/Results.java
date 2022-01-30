@@ -5,11 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.animation.ValueAnimator;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class Results extends AppCompatActivity {
 
     TextView score, position, percentageView;
+    Button doneQuiz;
 
 
     @Override
@@ -20,6 +22,7 @@ public class Results extends AppCompatActivity {
         score = findViewById(R.id.resultsScore);
         position = findViewById(R.id.resultsPosition);
         percentageView = findViewById(R.id.percentage);
+        doneQuiz = findViewById(R.id.doneQuiz);
 
         Intent intent = getIntent();
         int marks = intent.getExtras().getInt("marks");
@@ -47,5 +50,11 @@ public class Results extends AppCompatActivity {
             }
         });
         animator.start();
+
+        doneQuiz.setOnClickListener(v -> {
+            Intent i = new Intent(getApplicationContext(), Home.class);
+            startActivity(i);
+            finish();
+        });
     }
 }

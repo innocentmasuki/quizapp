@@ -3,11 +3,17 @@ package com.innocentmasuki.quizapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.media.MediaPlayer;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.VibrationEffect;
+import android.os.Vibrator;
 import android.util.Log;
+import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
@@ -23,11 +29,12 @@ public class Questions extends AppCompatActivity {
 
     Boolean answered = false, timeUp = false;
     Animation shake;
+    View contents;
 
     private boolean mTimerRunning;
 
     TextView tv, userScores, user_marks;
-    Button nextQuestion, quitButton, submitAnswerBtn;
+    Button nextQuestion, quitButton, submitAnswerBtn, startQuiz,buttonQuit;
     RadioGroup radio_g;
     RadioButton rb1,rb2,rb3,rb4;
 
@@ -71,21 +78,26 @@ public class Questions extends AppCompatActivity {
     int counter = 0;
 
     private long mTimeLeftInMillis = duration[flag] * 1000;
-
+    Vibrator v ;
+    MediaPlayer correctSound;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_questions);
+        correctSound = MediaPlayer.create(getApplicationContext(), R.raw.correct);
 
         mProgressBar=(ProgressBar)findViewById(R.id.progressbar);
         questionProgressBar=(ProgressBar)findViewById(R.id.questionsProgress);
         shake = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.shake);
 
-
+        contents = findViewById(R.id.contents);
+        v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
         nextQuestion=(Button)findViewById(R.id.nextQuestion);
         submitAnswerBtn =(Button)findViewById(R.id.check_answer);
         quitButton =(Button)findViewById(R.id.buttonquit);
+        startQuiz =(Button)findViewById(R.id.startQuiz);
+        buttonQuit =(Button)findViewById(R.id.buttonQuit);
         tv=(TextView) findViewById(R.id.tvque);
         userScores=(TextView) findViewById(R.id.scores);
         user_marks=(TextView) findViewById(R.id.user_marks);
@@ -95,6 +107,31 @@ public class Questions extends AppCompatActivity {
         rb2=(RadioButton)findViewById(R.id.radioButton2);
         rb3=(RadioButton)findViewById(R.id.radioButton3);
         rb4=(RadioButton)findViewById(R.id.radioButton4);
+
+
+
+
+        for (int j : duration) totalSeconds += j;
+        startQuiz();
+
+
+        submitAnswerBtn.setOnClickListener(v -> submitAnswer());
+
+        nextQuestion.setOnClickListener(v -> goToNextQuestion());
+
+        buttonQuit.setOnClickListener(v -> {
+            Intent in = new Intent(getApplicationContext(),Results.class);
+            in.putExtra("marks", marks);
+            in.putExtra("total", totalSeconds);
+            startActivity(in);
+            finish();
+        });
+
+
+    }
+
+    private void startQuiz() {
+
         tv.setText(questions[flag]);
         rb1.setText(opt[0]);
         rb2.setText(opt[1]);
@@ -104,24 +141,13 @@ public class Questions extends AppCompatActivity {
 
 
 
-        // Iterate through all elements and add them to sum
-        for (int j : duration) totalSeconds += j;
+
         questionProgressBar.setMax(questions.length);
         questionProgressBar.setProgress(flag + 1);
 
 
         startTimer();
         updateCountDownText();
-
-        submitAnswerBtn.setOnClickListener(v -> {
-            submitAnswer();
-        });
-
-        nextQuestion.setOnClickListener(v -> {
-            goToNextQuestion();
-        });
-
-
     }
 
 
@@ -140,15 +166,22 @@ public class Questions extends AppCompatActivity {
             String ansText = userAnswer.getText().toString();
             if(ansText.equals(answers[flag])) {
                 correct++;
+                 correctSound.start();
                 pauseTimer();
                 marks = marks + seconds;
-                user_marks.setText("Scores : " + marks);
+                user_marks.setText(Integer.toString(marks));
                 userAnswer.setBackgroundResource(R.drawable.correct_background);
                 userAnswer.setTextColor(Color.parseColor("#FFFFFFFF"));
             }
 
             else {
                 pauseTimer();
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    v.vibrate(VibrationEffect.createOneShot(100, VibrationEffect.DEFAULT_AMPLITUDE));
+                } else {
+                    //deprecated in API 26
+                    v.vibrate(100);
+                }
                 userAnswer.setBackgroundResource(R.drawable.wrong_background);
                 for (int i=0;i<4;i++) {
                     RadioButton o = (RadioButton) radio_g.getChildAt(i);
@@ -231,7 +264,7 @@ public class Questions extends AppCompatActivity {
             @Override
             public void onTick(long millisUntilFinished) {
                 mTimeLeftInMillis = millisUntilFinished;
-                Log.v("Log_tag", "Tick of Progress"+ mTimeLeftInMillis);
+
 
                 updateCountDownText();
             }

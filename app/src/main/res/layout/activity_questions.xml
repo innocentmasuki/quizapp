@@ -3,11 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/white"
     android:layout_height="match_parent"
     tools:context=".Questions">
 
 
-
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:visibility="visible"
+    android:id="@+id/contents"
+    >
     <ProgressBar
         android:id="@+id/progressbar"
         style="@android:style/Widget.ProgressBar.Horizontal"
@@ -131,7 +137,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
-            android:background="@drawable/check_answers_button"
+            android:background="@drawable/primary_button"
             android:paddingHorizontal="50dp"
             android:backgroundTint="@color/secondary_color"
             android:text="CHECK"
@@ -146,11 +152,6 @@
 
     </LinearLayout>
 
-
-
-
-
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -164,9 +165,9 @@
 
             android:layout_marginBottom="20dp"
             android:layout_marginHorizontal="20dp"
-            android:id="@+id/buttonquit"
+            android:id="@+id/buttonQuit"
             android:layout_alignParentStart="true"
-            android:background="@drawable/check_answers_button"
+            android:background="@drawable/primary_button"
             android:textColor="@color/black"/>
 
         <Button
@@ -177,21 +178,24 @@
             android:layout_marginHorizontal="20dp"
             android:id="@+id/nextQuestion"
             android:layout_alignParentEnd="true"
-            android:background="@drawable/check_answers_button"
+            android:background="@drawable/primary_button"
             android:textColor="@color/black"/>
 
     </RelativeLayout>
 
-        <ProgressBar
-            android:id="@+id/questionsProgress"
-            style="@android:style/Widget.ProgressBar.Horizontal"
-            android:progress="0"
-            android:min="0"
-            android:layout_width="match_parent"
-            android:layout_alignParentBottom="true"
-            android:progressDrawable="@drawable/timer_progress_bar"
-            android:layout_height="20dp"
-            />
+    <ProgressBar
+        android:id="@+id/questionsProgress"
+        style="@android:style/Widget.ProgressBar.Horizontal"
+        android:progress="0"
+        android:min="0"
+        android:layout_width="match_parent"
+        android:layout_alignParentBottom="true"
+        android:progressDrawable="@drawable/timer_progress_bar"
+        android:layout_height="20dp"
+        />
+
+</RelativeLayout>
+
 
 
 

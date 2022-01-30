@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/white"
     android:layout_height="match_parent"
     tools:context=".Results">
 
@@ -41,5 +42,13 @@
     </LinearLayout>
 
 
-
+<Button
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="DONE"
+    android:id="@+id/doneQuiz"
+    android:background="@drawable/secondary_button"
+    android:layout_alignParentBottom="true"
+    android:layout_marginBottom="60dp"
+    android:layout_centerHorizontal="true"/>
 </RelativeLayout>
