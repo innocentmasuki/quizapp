@@ -27,7 +27,7 @@ public class Results extends AppCompatActivity {
         Intent intent = getIntent();
         int marks = intent.getExtras().getInt("marks");
         int total = intent.getExtras().getInt("total");
-        int percent = ((marks * 100 )/ total);
+        int percent = (int)(((float)marks /(float)total ) * 100);
 
         score.setText(marks + "/" + total);
 

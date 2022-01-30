@@ -74,7 +74,7 @@ public class Questions extends AppCompatActivity {
     int[] duration = {60,120,70,12,30,60,120,70,12,30};
 
     int flag=0;
-    public static int marks=0,correct=0,wrong=0;
+    public int marks=0,correct=0,wrong=0;
     int counter = 0;
 
     private long mTimeLeftInMillis = duration[flag] * 1000;
@@ -131,6 +131,7 @@ public class Questions extends AppCompatActivity {
     }
 
     private void startQuiz() {
+        marks=0;
 
         tv.setText(questions[flag]);
         rb1.setText(opt[0]);

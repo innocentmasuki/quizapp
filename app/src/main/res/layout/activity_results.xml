@@ -24,8 +24,9 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="120sp"
+            android:textSize="160sp"
             android:gravity="center"
+            android:fontFamily="@font/phosphatesolid"
             android:text="50%"
             android:textColor="@color/primary_color"
             android:layout_marginVertical="10dp"

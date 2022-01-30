@@ -41,7 +41,7 @@ public class Home extends AppCompatActivity {
                 i.putExtra("QUIZCODE", quizCode.getText().toString().trim());
 
                 ScaleAnimation scaleAnimation = new ScaleAnimation(1f, 7.0f, 1f, 7.0f, startQuiz.getWidth() / 2.0f, startQuiz.getHeight() / 2.0f);
-                scaleAnimation.setDuration(700);
+                scaleAnimation.setDuration(600);
                 startQuiz.setText("");
                 startQuiz.startAnimation(scaleAnimation);
 
@@ -60,7 +60,7 @@ public class Home extends AppCompatActivity {
                         handler.postDelayed(() -> {
                             startActivity(i);
                             finish();
-                        }, 600);
+                        }, 300);
                     }
                 });
             }else {

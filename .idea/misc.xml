@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.10885416666666667" />
+        <entry key="app/src/main/res/drawable/button_selector.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/check_answers_button.xml" value="0.175" />
         <entry key="app/src/main/res/drawable/correct_background.xml" value="0.14895833333333333" />
         <entry key="app/src/main/res/drawable/edit_text.xml" value="0.134" />
@@ -20,7 +21,7 @@
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.41041666666666665" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.1625" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.22" />
-        <entry key="app/src/main/res/layout/activity_questions.xml" value="0.11" />
+        <entry key="app/src/main/res/layout/activity_questions.xml" value="0.32098765432098764" />
         <entry key="app/src/main/res/layout/activity_results.xml" value="0.25" />
       </map>
     </option>

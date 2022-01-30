@@ -142,7 +142,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
-            android:background="@drawable/primary_button"
+            android:background="@drawable/button_selector"
             android:paddingHorizontal="50dp"
             android:layout_marginBottom="10dp"
             android:backgroundTint="@color/secondary_color"
