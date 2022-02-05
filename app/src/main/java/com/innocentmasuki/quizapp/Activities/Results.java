@@ -1,4 +1,4 @@
-package com.innocentmasuki.quizapp;
+package com.innocentmasuki.quizapp.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.innocentmasuki.quizapp.Activities.Home;
+import com.innocentmasuki.quizapp.R;
 
 public class Results extends AppCompatActivity {
 

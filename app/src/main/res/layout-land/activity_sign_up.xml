@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".Activities.SignUpActivity">
+
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingHorizontal="200dp"
+    android:layout_centerInParent="true"
+    android:paddingVertical="20dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:text="quiz"
+        android:textSize="80sp"
+        android:fontFamily="@font/phosphatesolid"
+        android:textColor="@color/black"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:text="question"
+        android:textSize="24sp"
+        android:letterSpacing="0.3"
+        android:fontFamily="@font/phosphatesolid"
+        android:textColor="@color/primary_color"/>
+
+
+    <EditText
+        android:id="@+id/email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="4dp"
+        android:background="@drawable/edit_text"
+        android:hint="name@example.com"
+        android:textColorHint="@color/grey"
+
+        android:inputType="textEmailAddress"
+        android:minHeight="48dp"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="10dp"
+        android:textColor="@color/primary_color"
+        android:autofillHints="" />
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="4dp"
+        android:background="@drawable/edit_text"
+        android:hint="Password"
+        android:textColorHint="@color/grey"
+
+        android:inputType="textPassword"
+        android:minHeight="48dp"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="10dp"
+        android:textColor="@color/primary_color"
+        android:importantForAutofill="no" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="sign up"
+        android:layout_marginTop="4dp"
+        android:layout_gravity="center"
+        android:id="@+id/signup"
+        android:background="@drawable/primary_button"
+        android:textColor="@color/black"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:paddingHorizontal="10dp"
+        android:layout_gravity="center"
+        android:paddingVertical="10dp"
+        android:textColor="@color/primary_color"
+        android:text="Log In"
+        android:gravity="center"
+        android:id="@+id/goToLogIn"/>
+</LinearLayout>
+
+
+
+</RelativeLayout>

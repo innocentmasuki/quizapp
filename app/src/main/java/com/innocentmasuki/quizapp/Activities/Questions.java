@@ -1,4 +1,4 @@
-package com.innocentmasuki.quizapp;
+package com.innocentmasuki.quizapp.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,6 +22,8 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.innocentmasuki.quizapp.R;
 
 import java.util.Locale;
 
@@ -111,7 +113,8 @@ public class Questions extends AppCompatActivity {
 
 
 
-        for (int j : duration) totalSeconds += j;
+
+
         startQuiz();
 
 
@@ -120,7 +123,7 @@ public class Questions extends AppCompatActivity {
         nextQuestion.setOnClickListener(v -> goToNextQuestion());
 
         buttonQuit.setOnClickListener(v -> {
-            Intent in = new Intent(getApplicationContext(),Results.class);
+            Intent in = new Intent(getApplicationContext(), Results.class);
             in.putExtra("marks", marks);
             in.putExtra("total", totalSeconds);
             startActivity(in);
@@ -132,6 +135,12 @@ public class Questions extends AppCompatActivity {
 
     private void startQuiz() {
         marks=0;
+        totalSeconds = 0;
+        for (int j : duration) {
+            totalSeconds = totalSeconds + j;
+        }
+
+
 
         tv.setText(questions[flag]);
         rb1.setText(opt[0]);

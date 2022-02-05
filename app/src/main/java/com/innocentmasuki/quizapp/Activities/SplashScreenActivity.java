@@ -1,4 +1,4 @@
-package com.innocentmasuki.quizapp;
+package com.innocentmasuki.quizapp.Activities;
 
 
 import android.content.Intent;

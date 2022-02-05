@@ -16,7 +16,11 @@
         <entry key="app/src/main/res/drawable/start_button.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/timer_progress_bar.xml" value="0.13020833333333334" />
         <entry key="app/src/main/res/drawable/wrong_background.xml" value="0.14895833333333333" />
+        <entry key="app/src/main/res/layout-land/activity_home.xml" value="0.33" />
+        <entry key="app/src/main/res/layout-land/activity_login.xml" value="0.33" />
         <entry key="app/src/main/res/layout-land/activity_questions.xml" value="0.21825396825396826" />
+        <entry key="app/src/main/res/layout-land/activity_results.xml" value="0.25" />
+        <entry key="app/src/main/res/layout-land/activity_sign_up.xml" value="0.33" />
         <entry key="app/src/main/res/layout-v29/activity_login.xml" value="0.20260416666666667" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.41041666666666665" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.1625" />

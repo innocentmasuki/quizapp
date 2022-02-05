@@ -1,4 +1,4 @@
-package com.innocentmasuki.quizapp;
+package com.innocentmasuki.quizapp.Activities;
 
 
 import androidx.annotation.NonNull;
@@ -7,11 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -19,10 +15,10 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.innocentmasuki.quizapp.R;
 import com.innocentmasuki.quizapp.RetrofitApi.Auth.Register;
 import com.innocentmasuki.quizapp.RetrofitApi.DataAPI;
 
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -61,7 +57,7 @@ public class SignUpActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_sign_up);
 
         email = findViewById(R.id.email);
         password = findViewById(R.id.password);

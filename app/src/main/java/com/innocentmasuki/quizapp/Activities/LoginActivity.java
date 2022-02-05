@@ -1,11 +1,10 @@
-package com.innocentmasuki.quizapp;
+package com.innocentmasuki.quizapp.Activities;
 
-import static com.innocentmasuki.quizapp.SignUpActivity.BASE_URL;
-import static com.innocentmasuki.quizapp.SignUpActivity.Email;
-import static com.innocentmasuki.quizapp.SignUpActivity.MyPREFERENCES;
-import static com.innocentmasuki.quizapp.SignUpActivity.Password;
-import static com.innocentmasuki.quizapp.SignUpActivity.Status;
-import static com.innocentmasuki.quizapp.SignUpActivity.retrofit;
+import static com.innocentmasuki.quizapp.Activities.SignUpActivity.Email;
+import static com.innocentmasuki.quizapp.Activities.SignUpActivity.MyPREFERENCES;
+import static com.innocentmasuki.quizapp.Activities.SignUpActivity.Password;
+import static com.innocentmasuki.quizapp.Activities.SignUpActivity.Status;
+import static com.innocentmasuki.quizapp.Activities.SignUpActivity.retrofit;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,16 +19,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import com.innocentmasuki.quizapp.R;
 import com.innocentmasuki.quizapp.RetrofitApi.DataAPI;
 import com.innocentmasuki.quizapp.RetrofitApi.Auth.Auth;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class LoginActivity extends AppCompatActivity {
 

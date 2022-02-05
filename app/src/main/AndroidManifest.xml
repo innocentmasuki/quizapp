@@ -14,19 +14,20 @@
         android:theme="@style/Theme.Quizapp"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".Home"
+            android:name=".Activities.Home"
             android:exported="false" />
         <activity
-            android:name=".Questions"
+            android:name=".Activities.Questions"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
-            android:name=".Results"
+            android:name=".Activities.Results"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".Activities.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".SplashScreenActivity"
+            android:name=".Activities.SplashScreenActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:exported="true"
             android:theme="@style/SplashScreenTheme">
@@ -37,10 +38,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SignUpActivity"
+            android:name=".Activities.SignUpActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:exported="true"
-            android:screenOrientation="portrait">
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

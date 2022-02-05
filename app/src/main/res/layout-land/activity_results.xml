@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:textSize="39sp"
             android:text="sds"
-            android:layout_marginVertical="10dp"
+            android:layout_marginBottom="10dp"
             android:gravity="center"
             android:id="@+id/resultsScore"
             />
@@ -29,7 +29,6 @@
             android:fontFamily="@font/phosphatesolid"
             android:text="50%"
             android:textColor="@color/primary_color"
-            android:layout_marginVertical="10dp"
             android:id="@+id/percentage"/>
         <TextView
             android:layout_width="match_parent"
@@ -39,17 +38,17 @@
             android:text="congratulations 🎉"
             android:layout_marginVertical="10dp"
             android:id="@+id/resultsPosition"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="DONE"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center"
+            android:id="@+id/doneQuiz"
+            android:background="@drawable/secondary_button"/>
 
     </LinearLayout>
 
 
-<Button
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="DONE"
-    android:id="@+id/doneQuiz"
-    android:background="@drawable/secondary_button"
-    android:layout_alignParentBottom="true"
-    android:layout_marginBottom="60dp"
-    android:layout_centerHorizontal="true"/>
+
 </RelativeLayout>

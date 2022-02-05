@@ -13,7 +13,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingHorizontal="50dp"
+        android:paddingHorizontal="200dp"
         android:layout_centerInParent="true"
         android:paddingVertical="20dp"
         android:orientation="vertical">
@@ -45,7 +45,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/edit_text"
             android:hint="name@example.com"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="20dp"
             android:layout_marginBottom="4dp"
 
 
@@ -77,15 +77,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Log In"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="4dp"
             android:layout_gravity="center"
             android:id="@+id/login"
             android:background="@drawable/primary_button"
             android:textColor="@color/black"/>
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="10dp"
+            android:paddingHorizontal="10dp"
+            android:layout_gravity="center"
             android:paddingVertical="10dp"
             android:textColor="@color/primary_color"
             android:text="Sign Up"

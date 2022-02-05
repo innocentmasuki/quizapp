@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="match_parent"
+    tools:context=".Activities.Home">
+
+    <Button
+        android:id="@+id/startQuiz"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="100dp"
+        android:background="@drawable/start_button"
+        android:elevation="2dp"
+        android:fontFamily="@font/phosphatesolid"
+        android:text="start"
+        android:textColor="@color/black"
+        android:textSize="40dp" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="100dp"
+        android:orientation="vertical">
+        <EditText
+            android:id="@+id/quizCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="QUIZ CODE"
+            android:background="@drawable/edit_text"
+            android:minHeight="48dp"
+            android:textColorHint="@color/grey"
+
+            android:paddingHorizontal="40dp"
+            android:textAlignment="center"
+            android:textColor="@color/primary_color"
+            android:paddingVertical="10dp"
+            android:layout_above="@+id/logOut"
+            android:layout_marginBottom="40dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Log Out"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textColor="@color/wrong"
+            android:padding="20dp"
+            android:id="@+id/logOut"/>
+    </LinearLayout>
+
+
+</RelativeLayout>

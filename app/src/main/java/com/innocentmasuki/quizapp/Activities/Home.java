@@ -1,9 +1,9 @@
-package com.innocentmasuki.quizapp;
+package com.innocentmasuki.quizapp.Activities;
 
-import static com.innocentmasuki.quizapp.SignUpActivity.Email;
-import static com.innocentmasuki.quizapp.SignUpActivity.MyPREFERENCES;
-import static com.innocentmasuki.quizapp.SignUpActivity.Password;
-import static com.innocentmasuki.quizapp.SignUpActivity.Status;
+import static com.innocentmasuki.quizapp.Activities.SignUpActivity.Email;
+import static com.innocentmasuki.quizapp.Activities.SignUpActivity.MyPREFERENCES;
+import static com.innocentmasuki.quizapp.Activities.SignUpActivity.Password;
+import static com.innocentmasuki.quizapp.Activities.SignUpActivity.Status;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,13 +12,14 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.animation.Animation;
 import android.view.animation.ScaleAnimation;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.innocentmasuki.quizapp.R;
 
 public class Home extends AppCompatActivity {
 
@@ -41,26 +42,28 @@ public class Home extends AppCompatActivity {
                 i.putExtra("QUIZCODE", quizCode.getText().toString().trim());
 
                 ScaleAnimation scaleAnimation = new ScaleAnimation(1f, 7.0f, 1f, 7.0f, startQuiz.getWidth() / 2.0f, startQuiz.getHeight() / 2.0f);
-                scaleAnimation.setDuration(600);
+                scaleAnimation.setDuration(400);
                 startQuiz.setText("");
                 startQuiz.startAnimation(scaleAnimation);
 
                 scaleAnimation.setAnimationListener(new Animation.AnimationListener() {
-                    public void onAnimationEnd(Animation animation) {
-
-
-                    }
-
-                    public void onAnimationRepeat(Animation animation) {
-
-                    }
 
                     public void onAnimationStart(Animation animation) {
                         Handler handler = new Handler();
                         handler.postDelayed(() -> {
                             startActivity(i);
                             finish();
-                        }, 300);
+                        }, 200);
+                    }
+
+                    @Override
+                    public void onAnimationEnd(Animation animation) {
+
+                    }
+
+                    @Override
+                    public void onAnimationRepeat(Animation animation) {
+
                     }
                 });
             }else {
